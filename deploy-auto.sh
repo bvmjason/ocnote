@@ -23,7 +23,7 @@ FTP_PATH="/"
 SSH_USER="root"
 SSH_HOST="121.43.147.73"
 SSH_PORT="35125"
-SSH_PATH="/www/wwwroot/ocnote.bvmcreative.com/"
+SSH_PATH="/www/wwwroot/ocnote.bvmlab.com/"
 
 cd ~/Desktop/workscript/html/ocnote
 
