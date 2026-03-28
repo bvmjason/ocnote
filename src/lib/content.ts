@@ -18,8 +18,13 @@ const ARTICLE_LIST = [
   },
   {
     id: 'first-chat',
-    path: '/assets/02-basic-formula-JFRaCKVg.md',
+    path: '/assets/01-first-chat-D8sKq2Lp.md',
     order: 1
+  },
+  {
+    id: 'basic-formula',
+    path: '/assets/02-basic-formula-JFRaCKVg.md',
+    order: 2
   }
 ]
 
