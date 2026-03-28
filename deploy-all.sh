@@ -37,7 +37,7 @@ echo ""
 
 # 4. 上传到服务器
 echo -e "${YELLOW}[4/4] 上传到服务器...${NC}"
-scp -r dist/* root@121.43.147.73:/www/server/panel/vhost/ocnote.bvmlab.com/
+scp -r dist/* root@121.43.147.73:/www/wwwroot/ocnote.bvmlab.com/
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}上传失败，请检查服务器连接${NC}"
