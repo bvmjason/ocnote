@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 export interface Article {
   id: string
   title: string
@@ -11,38 +9,56 @@ export interface Article {
   date?: string
 }
 
-// 使用 Vite 的 glob 导入
-const modules = import.meta.glob<{ default: string }>('../../content/**/*.md', { eager: true })
+// 文章列表（手动维护，确保可靠）
+const ARTICLE_LIST = [
+  {
+    id: 'model-selection',
+    path: '/assets/00-model-selection-CY6ArwKS.md',
+    order: 0
+  },
+  {
+    id: 'first-chat',
+    path: '/assets/02-basic-formula-JFRaCKVg.md',
+    order: 1
+  }
+]
 
 export async function loadArticles(): Promise<Article[]> {
   const articles: Article[] = []
   
-  for (const [, module] of Object.entries(modules)) {
-    const content = module.default
-    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
-    
-    if (frontmatterMatch) {
-      const frontmatter = frontmatterMatch[1]
-      const markdownContent = frontmatterMatch[2]
+  for (const article of ARTICLE_LIST) {
+    try {
+      const response = await fetch(article.path)
+      const content = await response.text()
       
-      const metadata: Partial<Article> = {}
-      frontmatter.split('\n').forEach((line: string) => {
-        const [key, ...valueParts] = line.split(':')
-        if (key && valueParts.length) {
-          const value = valueParts.join(':').trim().replace(/^["']|["']$/g, '')
-          metadata[key.trim() as keyof Article] = value as any
-        }
-      })
+      const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
       
-      articles.push({
-        id: metadata.id || '',
-        title: metadata.title || '',
-        description: metadata.description || '',
-        category: metadata.category || '',
-        order: parseInt(metadata.order?.toString() || '0'),
-        readTime: metadata.readTime || '',
-        content: markdownContent,
-      })
+      if (frontmatterMatch) {
+        const frontmatter = frontmatterMatch[1]
+        const markdownContent = frontmatterMatch[2]
+        
+        const metadata: Partial<Article> = {}
+        frontmatter.split('\n').forEach((line: string) => {
+          const [key, ...valueParts] = line.split(':')
+          if (key && valueParts.length) {
+            const value = valueParts.join(':').trim().replace(/^["']|["']$/g, '')
+            metadata[key.trim() as keyof Article] = value as any
+          }
+        })
+        
+        articles.push({
+          id: article.id,
+          title: metadata.title || '',
+          description: metadata.description || '',
+          category: metadata.category || 'intro',
+          order: article.order,
+          readTime: metadata.readTime || '5 分钟',
+          date: metadata.date,
+          content: markdownContent,
+        })
+      }
+    } catch (error) {
+      console.error(`Failed to load article ${article.id}:`, error)
     }
   }
   
