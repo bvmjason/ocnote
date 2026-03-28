@@ -26,4 +26,6 @@ export default defineConfig({
   optimizeDeps: {
     include: ['react-markdown', 'remark-gfm', 'rehype-highlight', 'fuse.js'],
   },
+  // 将 Markdown 文件作为资源处理
+  assetsInclude: ['**/*.md'],
 })
