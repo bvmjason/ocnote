@@ -1,5 +1,6 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 
 interface MarkdownRendererProps {
   content: string
@@ -10,6 +11,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
     <div className="prose prose-lg max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
         components={{
           h1: ({ node, ...props }) => (
             <h1 className="text-4xl font-bold mb-6 text-gray-900" {...props} />
