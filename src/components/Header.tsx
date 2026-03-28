@@ -10,11 +10,11 @@ export default function Header() {
             className="text-xl font-bold text-gray-900 hover:text-primary-500 transition-colors flex items-center gap-2"
           >
             <span>🐾</span>
-            <span>OpenClaw 101</span>
+            <span>OpenClaw 饲养日记</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#what-is" className="text-gray-600 hover:text-primary-500 transition-colors font-medium">
+            <a href="#intro" className="text-gray-600 hover:text-primary-500 transition-colors font-medium">
               学习
             </a>
             <a href="#skills" className="text-gray-600 hover:text-primary-500 transition-colors font-medium">
@@ -23,11 +23,11 @@ export default function Header() {
             <a href="#resources" className="text-gray-600 hover:text-primary-500 transition-colors font-medium">
               资源
             </a>
-            <a href="#community" className="text-gray-600 hover:text-primary-500 transition-colors font-medium">
-              社区
-            </a>
+            <Link to="/article/first-chat" className="text-gray-600 hover:text-primary-500 transition-colors font-medium">
+              入门教程
+            </Link>
             <a 
-              href="https://github.com/kaojason/openclaw-diary" 
+              href="https://github.com/kaojason/jasoncreative-svg" 
               target="_blank" 
               rel="noopener noreferrer"
               className="btn-secondary !px-4 !py-2 !text-sm"

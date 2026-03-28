@@ -121,6 +121,49 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 技能库 */}
+      <section id="skills" className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium mb-4">
+              🚀 5400+ 社区技能
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              精选技能推荐
+            </h2>
+            <p className="text-lg text-gray-600">
+              来自 awesome-openclaw-skills 的精选技能，涵盖 31 个分类。一键安装，即刻增强你的 AI 助理能力。
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: '🌐', category: '网页 & 前端', count: '46', skills: ['frontend-design', 'nextjs-expert', 'ui-audit'] },
+              { icon: '🤖', category: '编程 Agent', count: '55', skills: ['coding-agent', 'opencode-acp', 'skill-creator'] },
+              { icon: '☁️', category: 'DevOps & 云', count: '144', skills: ['cloudflare', 'docker', 'kubernetes'] },
+              { icon: '🔍', category: '搜索 & 研究', count: '148', skills: ['exa-plus', 'deepwiki', 'technews'] },
+              { icon: '📈', category: '营销 & 销售', count: '94', skills: ['seo-audit', 'social-content', 'copywriting'] },
+              { icon: '🧠', category: 'AI & 大模型', count: '159', skills: ['kimi', 'chatgpt', 'chromadb'] },
+            ].map((item) => (
+              <div key={item.category} className="card">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="text-3xl">{item.icon}</div>
+                  <span className="badge badge-primary">{item.count}</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{item.category}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {item.skills.map((skill) => (
+                    <span key={skill} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 六大维度 */}
       <section id="dimensions" className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -146,6 +189,47 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 资源 */}
+      <section id="resources" className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            📚 全网优质资源聚合
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="card">
+              <h3 className="text-xl font-semibold mb-3">☁️ 云平台部署</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li>• 阿里云 - 轻量应用服务器一键部署</li>
+                <li>• 腾讯云 - Lighthouse 一键部署</li>
+                <li>• DigitalOcean - One-Click 解决方案</li>
+                <li>• AWS - Mac 实例部署指南</li>
+              </ul>
+            </div>
+            
+            <div className="card">
+              <h3 className="text-xl font-semibold mb-3">📹 视频教程</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li>• B 站 - OpenClaw 海量全玩法攻略</li>
+                <li>• YouTube - Full Setup Tutorial</li>
+                <li>• YouTube - 10 分钟保姆级教程</li>
+                <li>• YouTube - Master OpenClaw in 30 Minutes</li>
+              </ul>
+            </div>
+            
+            <div className="card">
+              <h3 className="text-xl font-semibold mb-3">🔬 深度文章</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li>• IBM Think - OpenClaw 架构分析</li>
+                <li>• ZDNet - 安全加固进展</li>
+                <li>• Scientific American - AI Agent 深度报道</li>
+                <li>• WIRED - OpenClaw 的魅力与风险</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 特色 */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -166,6 +250,63 @@ export default function HomePage() {
                 <p className="text-gray-600">{item.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 社区 */}
+      <section id="community" className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            🌍 加入我们的社区
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-5xl mb-4">⭐</div>
+              <h3 className="text-xl font-semibold mb-2">GitHub</h3>
+              <p className="text-gray-600 mb-4">
+                查看源码、提交 Issue、参与贡献
+              </p>
+              <a 
+                href="https://github.com/kaojason/jasoncreative-svg" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+              >
+                访问 GitHub
+              </a>
+            </div>
+            
+            <div className="text-center">
+              <div className="text-5xl mb-4">💬</div>
+              <h3 className="text-xl font-semibold mb-2">Discord</h3>
+              <p className="text-gray-600 mb-4">
+                实时交流、获取帮助、分享经验
+              </p>
+              <a 
+                href="#"
+                className="btn-secondary"
+              >
+                加入 Discord（建设中）
+              </a>
+            </div>
+            
+            <div className="text-center">
+              <div className="text-5xl mb-4">📝</div>
+              <h3 className="text-xl font-semibold mb-2">贡献内容</h3>
+              <p className="text-gray-600 mb-4">
+                分享你的使用经验和技巧
+              </p>
+              <a 
+                href="https://github.com/kaojason/jasoncreative-svg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+              >
+                提交 PR
+              </a>
+            </div>
           </div>
         </div>
       </section>

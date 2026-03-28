@@ -32,7 +32,7 @@ export default function Footer() {
             <h4 className="text-white font-medium mb-4">社区</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="https://github.com/kaojason/openclaw-diary" className="hover:text-white transition-colors">
+                <a href="https://github.com/kaojason/jasoncreative-svg" className="hover:text-white transition-colors">
                   GitHub
                 </a>
               </li>

@@ -14,7 +14,16 @@ export default defineConfig({
     port: 5173,
     open: true,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'markdown': ['react-markdown', 'remark-gfm', 'rehype-highlight'],
+        },
+      },
+    },
+  },
   optimizeDeps: {
-    exclude: ['**/content/**/*.md'],
+    include: ['react-markdown', 'remark-gfm', 'rehype-highlight', 'fuse.js'],
   },
 })
