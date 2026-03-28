@@ -8,6 +8,7 @@ export interface Article {
   order: number
   readTime: string
   content: string
+  date?: string
 }
 
 // 使用 Vite 的 glob 导入
