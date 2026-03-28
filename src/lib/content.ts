@@ -12,7 +12,7 @@ export interface Article {
 }
 
 // 使用 Vite 的 glob 导入
-const modules = import.meta.glob<{ default: string }>('/content/**/*.md', { eager: true })
+const modules = import.meta.glob<{ default: string }>('../../content/**/*.md', { eager: true })
 
 export async function loadArticles(): Promise<Article[]> {
   const articles: Article[] = []
