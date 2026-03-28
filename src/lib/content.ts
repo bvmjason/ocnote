@@ -13,17 +13,17 @@ export interface Article {
 const ARTICLE_LIST = [
   {
     id: 'model-selection',
-    path: '/assets/00-model-selection-CY6ArwKS.md',
+    path: '/assets/00-model-selection-LS0tCmlk.md',
     order: 0
   },
   {
     id: 'first-chat',
-    path: '/assets/01-first-chat-D8sKq2Lp.md',
+    path: '/assets/01-first-chat-LS0tCmlk.md',
     order: 1
   },
   {
     id: 'basic-formula',
-    path: '/assets/02-basic-formula-JFRaCKVg.md',
+    path: '/assets/02-basic-formula-LS0tCmlk.md',
     order: 2
   }
 ]

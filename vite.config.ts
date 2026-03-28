@@ -1,10 +1,39 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import fs from 'fs'
+import { copyFileSync, mkdirSync } from 'fs'
+
+// 自定义插件：复制 markdown 文件到 dist/assets
+function copyMarkdownPlugin() {
+  return {
+    name: 'copy-markdown',
+    closeBundle() {
+      const srcDir = path.resolve(__dirname, 'content/intro')
+      const destDir = path.resolve(__dirname, 'dist/assets')
+      
+      if (!fs.existsSync(destDir)) {
+        mkdirSync(destDir, { recursive: true })
+      }
+      
+      const files = fs.readdirSync(srcDir).filter(f => f.endsWith('.md'))
+      files.forEach(file => {
+        const src = path.join(srcDir, file)
+        // 生成带 hash 的文件名（与 content.ts 中的路径匹配）
+        const content = fs.readFileSync(src, 'utf-8')
+        const hash = Buffer.from(content).toString('base64').substring(0, 8)
+        const baseName = file.replace('.md', '')
+        const dest = path.join(destDir, `${baseName}-${hash}.md`)
+        copyFileSync(src, dest)
+        console.log(`Copied ${file} -> ${baseName}-${hash}.md`)
+      })
+    }
+  }
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), copyMarkdownPlugin()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
