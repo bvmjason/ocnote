@@ -18,24 +18,30 @@ export default function Header() {
             </Link>
             
             {/* 桌面端菜单（隐藏于手机） */}
-            <div className="hidden sm:flex items-center space-x-4 md:space-x-6">
+            <div className="hidden sm:flex items-center space-x-3 md:space-x-4">
               <Link 
                 to="/" 
                 className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
               >
-                笔记
+                饲养日记
               </Link>
               <Link 
                 to="/news" 
                 className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
               >
-                新闻
+                新闻整理
+              </Link>
+              <Link 
+                to="/crawler" 
+                className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
+              >
+                爬虫教学
               </Link>
               <Link 
                 to="/commands" 
                 className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
               >
-                指令
+                常用指令
               </Link>
               <a 
                 href="https://github.com/bvmjason/ocnote" 
@@ -43,7 +49,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
               >
-                社群
+                社群支持
               </a>
             </div>
 

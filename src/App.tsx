@@ -4,6 +4,7 @@ import ArticlePage from './pages/ArticlePage'
 import CommandsPage from './pages/CommandsPage'
 import NewsPage from './pages/NewsPage'
 import NewsArticlePage from './pages/NewsArticlePage'
+import CrawlerPage from './pages/CrawlerPage'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/commands" element={<CommandsPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/news/:id" element={<NewsArticlePage />} />
+        <Route path="/crawler" element={<CrawlerPage />} />
       </Routes>
     </BrowserRouter>
   )

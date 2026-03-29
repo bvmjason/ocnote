@@ -3,7 +3,7 @@ id: ai-visual-limitation
 title: "👁️ 视觉是 AI 最弱的环节 - 人与龙虾应该怎么配合"
 description: "视觉是 AI 最弱的环节，给你一套视觉场景的协作指南"
 category: cognition
-order: 16
+order: 15
 readTime: "20 分钟"
 date: "2026-03-28"
 ---

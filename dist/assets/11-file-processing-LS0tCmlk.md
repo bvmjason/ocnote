@@ -421,7 +421,6 @@ name,age,city
 
 ---
 title: XXX
-date: 2026-03-25
 category: intro
 tags: [XXX, XXX, XXX]
 ---

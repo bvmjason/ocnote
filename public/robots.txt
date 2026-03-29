@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap 位置
+Sitemap: https://ocnote.bvmcreative.com/sitemap.xml
+
+# 允许所有主流搜索引擎
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# 禁止访问管理路径（如果有）
+Disallow: /admin/
+Disallow: /private/

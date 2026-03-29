@@ -2,17 +2,17 @@
 id: first-automation-script
 title: "🤖 让龙虾写你的第一个脚本 - 自动获取财经日报关键信息"
 description: "从 0 到 1，用 AI 写一个能用的自动化脚本，每天自动获取财经关键信息"
-category: intro
+category: cognition
 order: 16
 readTime: "25 分钟"
-date: "2026-03-28"
+date: "2026-03-29"
 ---
 
 > 写代码不是程序员的专利。
 > 
 > **会用 AI 写脚本的人，每天多出 2 小时。**
 
-## 📅 2026-03-28 日记
+## 📅 2026-03-29 日记
 
 今天想聊一个很多人心里的痛点：
 
@@ -258,7 +258,7 @@ python test_get_html.py
 
 <div class="news-item">
   <a class="title" href="/news/123">新闻标题</a>
-  <span class="time">2026-03-28 10:00</span>
+  <span class="time">2026-03-29 10:00</span>
 </div>
 
 【输出要求】
@@ -327,7 +327,7 @@ if __name__ == "__main__":
     html = """
     <div class="news-item">
       <a class="title" href="/news/123">央行降准 0.25 个百分点</a>
-      <span class="time">2026-03-28 10:00</span>
+      <span class="time">2026-03-29 10:00</span>
     </div>
     """
     
@@ -349,7 +349,7 @@ python test_parse.py
 
 # 预期输出：
 # 标题：央行降准 0.25 个百分点
-# 时间：2026-03-28 10:00
+# 时间：2026-03-29 10:00
 # 链接：https://www.wallstreetcn.com/news/123
 # ---
 ```
@@ -440,9 +440,9 @@ def filter_key_news(
 # 使用示例
 if __name__ == "__main__":
     news_list = [
-        {'title': '央行降准 0.25 个百分点', 'time': '2026-03-28 10:00', 'link': '...'},
-        {'title': '某某产品广告', 'time': '2026-03-28 11:00', 'link': '...'},
-        {'title': '腾讯发布新财报', 'time': '2026-03-28 12:00', 'link': '...'},
+        {'title': '央行降准 0.25 个百分点', 'time': '2026-03-29 10:00', 'link': '...'},
+        {'title': '某某产品广告', 'time': '2026-03-29 11:00', 'link': '...'},
+        {'title': '腾讯发布新财报', 'time': '2026-03-29 12:00', 'link': '...'},
     ]
     
     filtered = filter_key_news(news_list)
@@ -760,7 +760,7 @@ python finance_news.py
 3. 后台运行：nohup python finance_news.py &
 
 作者：AI 助手
-日期：2026-03-28
+日期：2026-03-29
 """
 
 # 所有代码...

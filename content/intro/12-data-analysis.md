@@ -3,14 +3,14 @@ id: data-analysis
 title: "📊 数据分析实战 - 用 AI 处理 Excel/CSV"
 description: "AI 是你的私人数据分析师，24 小时待命，给你一套数据分析实战指南"
 category: intro
-order: 13
+order: 12
 readTime: "25 分钟"
 date: "2026-03-25"
 ---
 
 > 数据分析不是魔法，是方法。
 
-## 📅 2026-03-26 日记
+## 📅 2026-03-25 日记
 
 今天聊一个超级实用的技能：
 

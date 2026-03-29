@@ -5,13 +5,39 @@ import Footer from '@/components/Footer'
 import { loadArticles, Article } from '@/lib/content'
 import { Search } from '@/lib/Search'
 
+// 移除标题中的表情符号
+function cleanTitle(title: string): string {
+  return title.replace(/[^\u4e00-\u9fa5a-zA-Z0-9\s\u3040-\u309F\u30A0-\u30FF\-_.,!?()"'《》""''【】、]/g, '').trim()
+}
+
+// 注入首页结构化数据
+function injectHomeSchema(articles: Article[]) {
+  const script = document.createElement('script')
+  script.type = 'application/ld+json'
+  script.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "OpenClaw 饲养日记 - 文章列表",
+    "description": "记录 AI 驯养过程中的点点滴滴，分享 AI 助手使用技巧、自动化脚本、爬虫教程",
+    "numberOfItems": articles.length,
+    "itemListElement": articles.slice(0, 10).map((article, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "url": `https://ocnote.bvmcreative.com/article/${article.id}`,
+      "name": article.title.replace(/[🐾📓📰🛠️💬🤖🕷️📊💡🎯📝🔥🎉✅❌⚠️]/g, '').trim()
+    }))
+  })
+  document.head.appendChild(script)
+  return script
+}
+
 type Category = 'all' | 'intro' | 'advanced' | 'cognition'
 
-const categoryConfig: Record<Category, { label: string; range: [number, number] }> = {
-  all: { label: '全部', range: [0, 16] },
+const categoryConfig: Record<Category, { label: string; range: [number, number]; limit?: number }> = {
+  all: { label: '全部', range: [0, 100] },
   intro: { label: '入门', range: [0, 7] },
   advanced: { label: '进阶', range: [7, 14] },
-  cognition: { label: '认知', range: [14, 17] }
+  cognition: { label: '认知', range: [14, 100] }
 }
 
 export default function HomePage() {
@@ -20,7 +46,20 @@ export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState<Category>('all')
 
   useEffect(() => {
-    loadArticles().then(setArticles)
+    let schemaScript: HTMLScriptElement | null = null
+    
+    loadArticles().then((loadedArticles) => {
+      setArticles(loadedArticles)
+      // 注入首页结构化数据
+      schemaScript = injectHomeSchema(loadedArticles)
+    })
+    
+    return () => {
+      // 清理结构化数据
+      if (schemaScript && document.head.contains(schemaScript)) {
+        document.head.removeChild(schemaScript)
+      }
+    }
   }, [])
 
   const handleArticleSelect = (article: Article) => {
@@ -29,7 +68,11 @@ export default function HomePage() {
 
   // 按分类过滤文章
   const filteredArticles = articles.filter((article) => {
+    // 排除新闻类别
+    if (article.category === 'news') return false
+    // 全部类别显示所有非新闻文章
     if (activeCategory === 'all') return true
+    // 其他分类按 order 范围过滤
     const order = parseInt(String(article.order))
     const [start, end] = categoryConfig[activeCategory].range
     return order >= start && order < end
@@ -59,22 +102,33 @@ export default function HomePage() {
           {/* 分类 Tab */}
           <div className="mb-8">
             <div className="flex flex-wrap gap-2 justify-center">
-              {(Object.keys(categoryConfig) as Category[]).map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
-                    activeCategory === category
-                      ? 'bg-primary-500 text-white'
-                      : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                  }`}
-                >
-                  {categoryConfig[category].label}
-                  <span className="ml-2 text-xs opacity-80">
-                    {category === 'all' ? articles.length : categoryConfig[category].range[1] - categoryConfig[category].range[0]}
-                  </span>
-                </button>
-              ))}
+              {(Object.keys(categoryConfig) as Category[]).map((category) => {
+                // 计算每个分类的文章数量
+                const count = articles.filter(a => {
+                  if (a.category === 'news') return false
+                  if (category === 'all') return true
+                  const order = parseInt(String(a.order))
+                  const [start, end] = categoryConfig[category].range
+                  return order >= start && order < end
+                }).length
+                
+                return (
+                  <button
+                    key={category}
+                    onClick={() => setActiveCategory(category)}
+                    className={`px-4 py-2 rounded-lg font-medium transition-colors text-sm sm:text-base ${
+                      activeCategory === category
+                        ? 'bg-primary-500 text-white'
+                        : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
+                    }`}
+                  >
+                    {categoryConfig[category].label}
+                    <span className="ml-2 text-xs opacity-80">
+                      {count}
+                    </span>
+                  </button>
+                )
+              })}
             </div>
           </div>
 
@@ -93,7 +147,7 @@ export default function HomePage() {
                 >
                   <div className="flex-1">
                     <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
-                      {article.title}
+                      {cleanTitle(article.title)}
                     </h3>
                     <p className="text-gray-600 text-sm sm:text-base mb-3 line-clamp-2">
                       {article.description}

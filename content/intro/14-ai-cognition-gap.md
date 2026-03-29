@@ -3,14 +3,14 @@ id: ai-cognition-gap
 title: "🎯 AI 不是万能药 - 为什么你需要基础认知"
 description: "在主人没有这个技能下，AI 的帮助会弱化，给你一套认知提升指南"
 category: cognition
-order: 15
+order: 14
 readTime: "18 分钟"
 date: "2026-03-27"
 ---
 
 > AI 不是替代你学习，是放大你的能力。
 
-## 📅 2026-03-28 日记
+## 📅 2026-03-27 日记
 
 今天聊一个扎心的真相：
 
