@@ -14,7 +14,7 @@ export default function Header() {
               to="/" 
               className="text-lg sm:text-xl font-bold text-gray-900 hover:text-primary-500 transition-colors truncate"
             >
-              🐾 OpenClaw
+              OpenClaw
             </Link>
             
             {/* 桌面端菜单（隐藏于手机） */}
@@ -23,19 +23,19 @@ export default function Header() {
                 to="/" 
                 className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
               >
-                📓 笔记
+                笔记
               </Link>
               <Link 
                 to="/news" 
                 className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
               >
-                📰 新闻
+                新闻
               </Link>
               <Link 
                 to="/commands" 
                 className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
               >
-                🛠️ 指令
+                指令
               </Link>
               <a 
                 href="https://github.com/bvmjason/ocnote" 
@@ -43,7 +43,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
               >
-                💬 社群
+                社群
               </a>
             </div>
 
@@ -75,7 +75,7 @@ export default function Header() {
           <div className="fixed top-0 right-0 h-full w-64 bg-white shadow-xl z-50 sm:hidden transform transition-transform duration-300 ease-in-out">
             {/* 菜单头部 */}
             <div className="flex justify-between items-center p-4 border-b border-gray-200">
-              <span className="text-lg font-bold text-gray-900">🐾 OpenClaw</span>
+              <span className="text-lg font-bold text-gray-900">OpenClaw</span>
               <button
                 onClick={() => setIsMenuOpen(false)}
                 className="p-2 rounded-md text-gray-600 hover:text-primary-500 hover:bg-gray-100 transition-colors"
@@ -95,7 +95,6 @@ export default function Header() {
                 className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span className="text-xl">📓</span>
                 <span>笔记</span>
               </Link>
               <Link 
@@ -103,7 +102,6 @@ export default function Header() {
                 className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span className="text-xl">📰</span>
                 <span>新闻</span>
               </Link>
               <Link 
@@ -111,7 +109,6 @@ export default function Header() {
                 className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span className="text-xl">🛠️</span>
                 <span>指令</span>
               </Link>
               <a 
@@ -120,7 +117,6 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors font-medium"
               >
-                <span className="text-xl">💬</span>
                 <span>社群</span>
               </a>
             </div>

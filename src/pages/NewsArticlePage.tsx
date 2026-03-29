@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 const newsData = [
   {
@@ -383,129 +385,126 @@ const newsData = [
   }
 ]
 
-// 按日期分组
-const groupedNews = newsData.reduce((acc, news) => {
-  if (!acc[news.date]) {
-    acc[news.date] = []
+export default function NewsArticlePage() {
+  const { id } = useParams<{ id: string }>()
+  const news = newsData.find(n => n.id === id)
+
+  if (!news) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">😕 新闻未找到</h1>
+          <p className="text-gray-600 mb-8">抱歉，这条新闻不存在或已被删除</p>
+          <Link to="/news" className="text-primary-500 hover:text-primary-600 font-medium">
+            返回新闻列表 →
+          </Link>
+        </div>
+      </div>
+    )
   }
-  acc[news.date].push(news)
-  return acc
-}, {} as Record<string, typeof newsData>)
 
-const dates = Object.keys(groupedNews).sort().reverse()
-
-export default function NewsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <a href="/" className="text-lg sm:text-xl font-bold text-gray-900 hover:text-primary-500 transition-colors truncate">
-              🐾 OpenClaw
-            </a>
-            
-            <div className="hidden sm:flex items-center space-x-4 md:space-x-6">
-              <a href="/" className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base">
-                📓 笔记
-              </a>
-              <a href="/news" className="text-primary-500 font-medium text-sm md:text-base">
-                📰 新闻
-              </a>
-              <a href="/commands" className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base">
-                🛠️ 指令
-              </a>
-              <a href="https://github.com/bvmjason/ocnote" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base">
-                💬 社群
-              </a>
-            </div>
-
-            <button className="sm:hidden p-2 rounded-md text-gray-600 hover:text-primary-500 hover:bg-gray-100 transition-colors">
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </nav>
-      </div>
+      <Header />
       
       <main className="py-8 sm:py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* 标题区域 */}
-          <div className="text-center mb-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              OpenClaw 新闻中心
+          {/* 返回按钮 */}
+          <Link 
+            to="/news" 
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-primary-500 transition-colors mb-6"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            返回新闻列表
+          </Link>
+
+          {/* 文章头部 */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+            <div className="flex items-center gap-3 text-sm text-gray-500 mb-4">
+              <span className="bg-primary-100 text-primary-600 px-3 py-1 rounded-full font-medium">
+                {news.date}
+              </span>
+              <span>📍</span>
+              <a 
+                href={news.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary-500 hover:text-primary-600 hover:underline"
+              >
+                {news.source}
+              </a>
+            </div>
+
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+              {news.title}
             </h1>
-            <p className="text-base sm:text-lg text-gray-600 mb-2">
-              过去两周的 OpenClaw 相关新闻
-            </p>
-            <p className="text-sm text-gray-500">
-              每条都附带理解、分析、建议
-            </p>
-            <p className="text-xs text-gray-400 mt-3">
-              更新时间：2026-03-29 18:00
+
+            <p className="text-lg text-gray-600 leading-relaxed">
+              {news.summary}
             </p>
           </div>
 
-          {/* 日期分组新闻列表 */}
-          <div className="space-y-8">
-            {dates.map((date) => (
-              <div key={date}>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-primary-500">
-                  {date}
-                </h2>
-                <div className="space-y-4">
-                  {groupedNews[date].map((news) => (
-                    <Link
-                      key={news.id}
-                      to={`/news/${news.id}`}
-                      className="block bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md hover:border-primary-300 transition-all"
-                    >
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                        {news.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                        {news.summary}
-                      </p>
-                      
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-sm text-gray-500">
-                          <span>{news.source}</span>
-                        </div>
-                        <span className="text-primary-500 font-medium text-sm flex-shrink-0">
-                          阅读 →
-                        </span>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+          {/* 文章内容 */}
+          <div className="space-y-6">
+            {/* 理解 */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <h2 className="text-xl font-bold text-gray-900">理解</h2>
               </div>
-            ))}
+              <p className="text-gray-700 leading-relaxed bg-blue-50 p-4 rounded-lg">
+                {news.understanding}
+              </p>
+            </div>
+
+            {/* 分析 */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <h2 className="text-xl font-bold text-gray-900">分析</h2>
+              </div>
+              <ul className="space-y-3">
+                {news.analysis.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-gray-700">
+                    <span className="text-primary-500 mt-1 flex-shrink-0">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 建议 */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <h2 className="text-xl font-bold text-gray-900">建议</h2>
+              </div>
+              <ul className="space-y-3">
+                {news.suggestion.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-gray-700">
+                    <span className="text-green-500 mt-1 flex-shrink-0">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* 统计信息 */}
-          <div className="text-center text-xs sm:text-sm text-gray-500 mt-8 pb-8">
-            <p className="mb-1">最后更新：2026-03-29 18:00</p>
-            <p className="mb-1">新闻数量：{newsData.length} 条</p>
-            <p>时间跨度：2026-03-16 ~ 2026-03-29</p>
+          {/* 下一篇导航 */}
+          <div className="mt-8 flex justify-between items-center">
+            <Link 
+              to="/news" 
+              className="text-gray-600 hover:text-primary-500 transition-colors font-medium"
+            >
+              ← 返回新闻列表
+            </Link>
+            <span className="text-sm text-gray-500">
+              {newsData.findIndex(n => n.id === id) + 1} / {newsData.length}
+            </span>
           </div>
         </div>
       </main>
 
-      <div className="bg-white border-t border-gray-200 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
-          <p>🐾 OpenClaw 饲养日记 - 记录 AI 驯养的每一天</p>
-          <div className="mt-2 space-x-4">
-            <a href="https://github.com/bvmjason/ocnote" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500">
-              GitHub
-            </a>
-            <span>·</span>
-            <a href="https://gitee.com/bvm_jason/ocnote" target="_blank" rel="noopener noreferrer" className="hover:text-primary-500">
-              Gitee
-            </a>
-          </div>
-        </div>
-      </div>
+      <Footer />
     </div>
   )
 }
