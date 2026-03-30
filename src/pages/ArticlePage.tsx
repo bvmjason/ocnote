@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ReadingProgress from '@/components/ReadingProgress'
-import { loadDiaryArticleById, loadDiaryArticles, FullArticle as Article } from '@/lib/diary'
+import { loadArticleById, loadAllArticles, FullArticle as Article } from '@/lib/articles'
 import { MarkdownRenderer } from '@/components/MarkdownRenderer'
 import { Search } from '@/lib/Search'
 
@@ -62,8 +62,12 @@ function injectArticleSchema(article: Article) {
       {
         "@type": "ListItem",
         "position": 2,
-        "name": article.category,
-        "item": `https://ocnote.bvmcreative.com/?category=${article.category}`
+        "name": article.category === 'crawler' ? '爬虫教学' : 
+                  article.category === 'agent' ? 'AGENT 教学' : 
+                  article.category === 'news' ? '新闻整理' : '饲养日记',
+        "item": article.category === 'crawler' ? 'https://ocnote.bvmcreative.com/crawler' :
+                  article.category === 'agent' ? 'https://ocnote.bvmcreative.com/agent' :
+                  article.category === 'news' ? 'https://ocnote.bvmcreative.com/news' : 'https://ocnote.bvmcreative.com/'
       },
       {
         "@type": "ListItem",
@@ -92,8 +96,8 @@ export default function ArticlePage() {
     let schemaScript: HTMLScriptElement | null = null
     
     Promise.all([
-      loadDiaryArticleById(id || ''),
-      loadDiaryArticles(),
+      loadArticleById(id || ''),
+      loadAllArticles(),
     ]).then(([loadedArticle, all]) => {
       setArticle(loadedArticle)
       setAllArticles(all)
@@ -140,14 +144,16 @@ export default function ArticlePage() {
     )
   }
 
-  const currentIndex = allArticles.findIndex(a => a.id === article.id)
-  const prevArticle = allArticles[currentIndex - 1]
-  const nextArticle = allArticles[currentIndex + 1]
-
-  // 推荐相关文章（简单实现：同分类的其他文章）
+  // 获取同分类的文章用于推荐
   const relatedArticles = allArticles
-    .filter(a => a.id !== article.id && a.category === article.category)
+    .filter(a => a.category === article.category && a.id !== article.id)
     .slice(0, 5)
+
+  // 获取上一篇和下一篇（同分类内）
+  const categoryArticles = allArticles.filter(a => a.category === article.category)
+  const currentIndex = categoryArticles.findIndex(a => a.id === article.id)
+  const prevArticle = categoryArticles[currentIndex - 1]
+  const nextArticle = categoryArticles[currentIndex + 1]
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -167,7 +173,7 @@ export default function ArticlePage() {
               <article className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 md:p-12">
                 <header className="mb-12">
                   <div className="flex items-center gap-4 mb-4">
-                    <span className="badge badge-primary">{article.category}</span>
+                    <span className="badge badge-primary">{article.category === 'crawler' ? '爬虫教学' : article.category === 'agent' ? 'AGENT 教学' : article.category === 'news' ? '新闻' : '饲养日记'}</span>
                     <span className="text-sm text-gray-500">{article.date}</span>
                     <span className="text-sm text-gray-500">{article.readTime}</span>
                   </div>
@@ -193,8 +199,8 @@ export default function ArticlePage() {
                       {cleanTitle(nextArticle.title)} →
                     </Link>
                   ) : (
-                    <Link to="/" className="btn-secondary text-center">
-                      返回首页 →
+                    <Link to={article.category === 'crawler' ? '/crawler' : article.category === 'agent' ? '/agent' : '/'} className="btn-secondary text-center">
+                      返回{article.category === 'crawler' ? '爬虫教学' : article.category === 'agent' ? 'AGENT 教学' : '首页'} →
                     </Link>
                   )}
                 </nav>
@@ -239,26 +245,12 @@ export default function ArticlePage() {
                     <Link to="/" className="block text-sm text-primary-500 hover:text-primary-600 transition-colors">
                       返回首页
                     </Link>
-                    <a href="#intro" className="block text-sm text-primary-500 hover:text-primary-600 transition-colors">
-                      入门篇
-                    </a>
-                    <a href="#skills" className="block text-sm text-primary-500 hover:text-primary-600 transition-colors">
-                      技能库
-                    </a>
-                    <a href="#resources" className="block text-sm text-primary-500 hover:text-primary-600 transition-colors">
-                      资源
-                    </a>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-3">分类</h4>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="badge badge-primary">入门篇</span>
-                    <span className="badge bg-gray-100 text-gray-600">文书</span>
-                    <span className="badge bg-gray-100 text-gray-600">策划</span>
-                    <span className="badge bg-gray-100 text-gray-600">撰写</span>
-                    <span className="badge bg-gray-100 text-gray-600">代码</span>
+                    <Link to="/crawler" className="block text-sm text-primary-500 hover:text-primary-600 transition-colors">
+                      爬虫教学
+                    </Link>
+                    <Link to="/agent" className="block text-sm text-primary-500 hover:text-primary-600 transition-colors">
+                      AGENT 教学
+                    </Link>
                   </div>
                 </div>
               </div>
