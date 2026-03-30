@@ -107,21 +107,35 @@ export default function Header() {
                 className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span>笔记</span>
+                <span>饲养日记</span>
               </Link>
               <Link 
                 to="/news" 
                 className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span>新闻</span>
+                <span>新闻整理</span>
+              </Link>
+              <Link 
+                to="/agent" 
+                className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span>AGENT 教学</span>
+              </Link>
+              <Link 
+                to="/crawler" 
+                className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <span>爬虫教学</span>
               </Link>
               <Link 
                 to="/commands" 
                 className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span>指令</span>
+                <span>常用指令</span>
               </Link>
               <a 
                 href="https://github.com/bvmjason/ocnote" 
@@ -129,7 +143,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 py-3 px-4 rounded-lg text-gray-700 hover:text-primary-500 hover:bg-primary-50 transition-colors font-medium"
               >
-                <span>社群</span>
+                <span>社群支持</span>
               </a>
             </div>
           </div>
