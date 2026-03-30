@@ -5,7 +5,6 @@ import { useState } from 'react'
 const commands = [
   {
     category: 'Gateway 管理',
-    icon: '🚀',
     items: [
       { cmd: 'openclaw gateway start', desc: '启动 Gateway' },
       { cmd: 'openclaw gateway restart', desc: '重启 Gateway' },
@@ -16,7 +15,6 @@ const commands = [
   },
   {
     category: '系统管理',
-    icon: '⚙️',
     items: [
       { cmd: 'openclaw --version', desc: '查看版本号' },
       { cmd: 'openclaw update', desc: '更新到最新版本' },
@@ -28,7 +26,6 @@ const commands = [
   },
   {
     category: 'Slash 命令',
-    icon: '💬',
     items: [
       { cmd: '/status', desc: '查看会话状态（模型使用/时间/成本）' },
       { cmd: '/reasoning on', desc: '开启推理模式' },
@@ -40,7 +37,6 @@ const commands = [
   },
   {
     category: '国内平台接入',
-    icon: '🇨🇳',
     items: [
       { cmd: 'openclaw channels add feishu', desc: '添加飞书通道' },
       { cmd: 'openclaw channels add dingtalk', desc: '添加钉钉通道' },
@@ -52,7 +48,6 @@ const commands = [
   },
   {
     category: '快速安装',
-    icon: '📦',
     items: [
       { cmd: 'curl -fsSL https://openclaw.ai/install.sh | bash', desc: '一键安装 OpenClaw' },
       { cmd: 'openclaw status', desc: '验证安装是否成功' }
@@ -63,9 +58,9 @@ const commands = [
 export default function CommandsPage() {
   const [copiedIndex, setCopiedIndex] = useState<string | null>(null)
 
-  const copyToClipboard = async (text: string, index: string) => {
+  const handleCopy = async (cmd: string, index: string) => {
     try {
-      await navigator.clipboard.writeText(text)
+      await navigator.clipboard.writeText(cmd)
       setCopiedIndex(index)
       setTimeout(() => setCopiedIndex(null), 2000)
     } catch (err) {
@@ -80,37 +75,51 @@ export default function CommandsPage() {
       <main className="py-8 sm:py-12">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">🛠️ OpenClaw 常用指令</h1>
-            <p className="text-base sm:text-lg text-gray-600">快速查找和复制常用命令</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              OpenClaw 常用指令
+            </h1>
+            <p className="text-base sm:text-lg text-gray-600">
+              快速查找和复制常用命令
+            </p>
           </div>
 
           <div className="space-y-8">
-            {commands.map((category, catIdx) => (
-              <div key={catIdx} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            {commands.map((section, sectionIndex) => (
+              <div key={section.category} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="text-2xl">{category.icon}</span>
-                  <h2 className="text-xl font-bold text-gray-900">{category.category}</h2>
+                  <h2 className="text-xl font-bold text-gray-900">
+                    {section.category}
+                  </h2>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {category.items.map((item, itemIdx) => {
-                    const index = `${catIdx}-${itemIdx}`
+                  {section.items.map((item, itemIndex) => {
+                    const index = `${sectionIndex}-${itemIndex}`
+                    const isCopied = copiedIndex === index
+                    
                     return (
-                      <div key={itemIdx} className="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow">
+                      <div
+                        key={item.cmd}
+                        className="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow"
+                      >
                         <div className="flex items-start justify-between mb-2 gap-2">
-                          <code className="text-sm font-mono text-primary-600 break-all flex-1">{item.cmd}</code>
+                          <code className="text-sm font-mono text-primary-600 break-all flex-1">
+                            {item.cmd}
+                          </code>
                           <button
-                            onClick={() => copyToClipboard(item.cmd, index)}
+                            onClick={() => handleCopy(item.cmd, index)}
                             className={`text-xs px-3 py-1 rounded transition-colors flex-shrink-0 ${
-                              copiedIndex === index
+                              isCopied
                                 ? 'bg-green-500 text-white'
                                 : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
                             }`}
                           >
-                            {copiedIndex === index ? '✓ 已复制' : '📋 复制'}
+                            {isCopied ? '✓ 已复制' : '📋 复制'}
                           </button>
                         </div>
-                        <p className="text-gray-600 text-sm">{item.desc}</p>
+                        <p className="text-gray-600 text-sm">
+                          {item.desc}
+                        </p>
                       </div>
                     )
                   })}
@@ -120,7 +129,9 @@ export default function CommandsPage() {
           </div>
 
           <div className="mt-8 bg-primary-50 rounded-xl p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">💡 使用提示</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              使用提示
+            </h3>
             <ul className="space-y-2 text-gray-700 text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-primary-500 mt-1">•</span>
