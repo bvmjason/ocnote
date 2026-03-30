@@ -1,6 +1,6 @@
 ---
 id: optimize-ai-financial-report
-title: "📊 AI 生成的财经报告不够精准？从 5 个维度优化"
+title: "AI 生成的财经报告不够精准，只要从这 5 个维度优化"
 description: "AI 生成的财经报告总是差点意思？从数据源、分析框架、行业认知、风险识别、表达逻辑 5 个维度优化"
 category: cognition
 order: 17
