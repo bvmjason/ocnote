@@ -104,7 +104,8 @@ export default function HomePage() {
           <div className="mb-8">
             <div className="flex flex-wrap gap-2 justify-center">
               {(Object.keys(categoryConfig) as Category[]).map((category) => {
-                const count = filteredArticles.filter(a => {
+                // 使用 articles（所有文章）而不是 filteredArticles（已过滤）来计算数量
+                const count = articles.filter(a => {
                   if (category === 'all') return true
                   const order = parseInt(String(a.order))
                   const [start, end] = categoryConfig[category].range
