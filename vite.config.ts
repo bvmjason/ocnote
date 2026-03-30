@@ -12,7 +12,8 @@ function copyMarkdownPlugin() {
       const categories = [
         { src: 'content/diary', dest: 'dist/assets/diary' },
         { src: 'content/agent', dest: 'dist/assets/agent' },
-        { src: 'content/news', dest: 'dist/assets/news' }
+        { src: 'content/news', dest: 'dist/assets/news' },
+        { src: 'content/crawler', dest: 'dist/assets/crawler' }
       ]
       
       categories.forEach(({ src, dest }) => {
