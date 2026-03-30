@@ -2,8 +2,15 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { loadArticles, Article } from '@/lib/content'
+import { loadDiaryArticles, FullArticle as Article } from '@/lib/diary'
 import { Search } from '@/lib/Search'
+
+interface SearchArticle {
+  id: string
+  title: string
+  description: string
+  content: string
+}
 
 // 移除标题中的表情符号
 function cleanTitle(title: string): string {
@@ -33,7 +40,7 @@ function injectHomeSchema(articles: Article[]) {
 
 type Category = 'all' | 'intro' | 'advanced' | 'cognition'
 
-const categoryConfig: Record<Category, { label: string; range: [number, number]; limit?: number }> = {
+const categoryConfig: Record<Category, { label: string; range: [number, number] }> = {
   all: { label: '全部', range: [0, 100] },
   intro: { label: '入门', range: [0, 7] },
   advanced: { label: '进阶', range: [7, 14] },
@@ -48,31 +55,25 @@ export default function HomePage() {
   useEffect(() => {
     let schemaScript: HTMLScriptElement | null = null
     
-    loadArticles().then((loadedArticles) => {
+    loadDiaryArticles().then((loadedArticles) => {
       setArticles(loadedArticles)
-      // 注入首页结构化数据
       schemaScript = injectHomeSchema(loadedArticles)
     })
     
     return () => {
-      // 清理结构化数据
       if (schemaScript && document.head.contains(schemaScript)) {
         document.head.removeChild(schemaScript)
       }
     }
   }, [])
 
-  const handleArticleSelect = (article: Article) => {
+  const handleArticleSelect = (article: SearchArticle) => {
     navigate(`/article/${article.id}`)
   }
 
   // 按分类过滤文章
   const filteredArticles = articles.filter((article) => {
-    // 排除新闻类别
-    if (article.category === 'news') return false
-    // 全部类别显示所有非新闻文章
     if (activeCategory === 'all') return true
-    // 其他分类按 order 范围过滤
     const order = parseInt(String(article.order))
     const [start, end] = categoryConfig[activeCategory].range
     return order >= start && order < end
@@ -103,9 +104,7 @@ export default function HomePage() {
           <div className="mb-8">
             <div className="flex flex-wrap gap-2 justify-center">
               {(Object.keys(categoryConfig) as Category[]).map((category) => {
-                // 计算每个分类的文章数量
-                const count = articles.filter(a => {
-                  if (a.category === 'news') return false
+                const count = filteredArticles.filter(a => {
                   if (category === 'all') return true
                   const order = parseInt(String(a.order))
                   const [start, end] = categoryConfig[category].range

@@ -2,9 +2,17 @@ import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { loadArticleById, loadArticles, Article } from '@/lib/content'
+import ReadingProgress from '@/components/ReadingProgress'
+import { loadDiaryArticleById, loadDiaryArticles, FullArticle as Article } from '@/lib/diary'
 import { MarkdownRenderer } from '@/components/MarkdownRenderer'
 import { Search } from '@/lib/Search'
+
+interface SearchArticle {
+  id: string
+  title: string
+  description: string
+  content: string
+}
 
 // 移除标题中的表情符号
 function cleanTitle(title: string): string {
@@ -15,7 +23,6 @@ function cleanTitle(title: string): string {
 function injectArticleSchema(article: Article) {
   const cleanTitleStr = cleanTitle(article.title)
   
-  // 文章结构化数据
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -42,7 +49,6 @@ function injectArticleSchema(article: Article) {
     }
   }
   
-  // 面包屑导航结构化数据
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -62,7 +68,7 @@ function injectArticleSchema(article: Article) {
       {
         "@type": "ListItem",
         "position": 3,
-        "name": cleanTitle,
+        "name": cleanTitleStr,
         "item": `https://ocnote.bvmcreative.com/article/${article.id}`
       }
     ]
@@ -86,29 +92,27 @@ export default function ArticlePage() {
     let schemaScript: HTMLScriptElement | null = null
     
     Promise.all([
-      loadArticleById(id || ''),
-      loadArticles(),
+      loadDiaryArticleById(id || ''),
+      loadDiaryArticles(),
     ]).then(([loadedArticle, all]) => {
       setArticle(loadedArticle)
       setAllArticles(all)
       setLoading(false)
       
-      // 注入文章结构化数据
       if (loadedArticle) {
         schemaScript = injectArticleSchema(loadedArticle)
       }
     })
-    
+
     return () => {
-      // 清理结构化数据
       if (schemaScript && document.head.contains(schemaScript)) {
         document.head.removeChild(schemaScript)
       }
     }
   }, [id])
 
-  const handleArticleSelect = (selectedArticle: Article) => {
-    navigate(`/article/${selectedArticle.id}`)
+  const handleArticleSelect = (article: SearchArticle) => {
+    navigate(`/article/${article.id}`)
   }
 
   if (loading) {
@@ -139,46 +143,28 @@ export default function ArticlePage() {
   const currentIndex = allArticles.findIndex(a => a.id === article.id)
   const prevArticle = allArticles[currentIndex - 1]
   const nextArticle = allArticles[currentIndex + 1]
-  
-  // 获取延伸阅读 - 根据相关性推荐
-  const getRelatedArticles = (currentArticle: Article, all: Article[]) => {
-    return all
-      .filter(a => a.id !== currentArticle.id && a.category !== 'news')
-      .map(a => {
-        let score = 0
-        // 同分类 +10 分
-        if (a.category === currentArticle.category) score += 10
-        // 标题包含关键词 +5 分
-        const keywords = currentArticle.title.split(/[\s,,-]/).filter(k => k.length > 2)
-        keywords.forEach(k => {
-          if (a.title.includes(k)) score += 5
-        })
-        // 描述包含关键词 +3 分
-        if (a.description.includes(currentArticle.description.substring(0, 20))) score += 3
-        return { ...a, score }
-      })
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 5)
-  }
-  
-  const relatedArticles = getRelatedArticles(article, allArticles)
+
+  // 推荐相关文章（简单实现：同分类的其他文章）
+  const relatedArticles = allArticles
+    .filter(a => a.id !== article.id && a.category === article.category)
+    .slice(0, 5)
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <ReadingProgress />
       <Header />
       
       <main className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* 搜索框 */}
+          {/* 搜索栏 */}
           <div className="mb-12">
             <Search articles={allArticles} onArticleSelect={handleArticleSelect} />
           </div>
-          
+
           <div className="grid lg:grid-cols-4 gap-8">
-            {/* 主内容区 */}
+            {/* 文章内容 */}
             <div className="lg:col-span-3">
               <article className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 md:p-12">
-                {/* 文章头部 */}
                 <header className="mb-12">
                   <div className="flex items-center gap-4 mb-4">
                     <span className="badge badge-primary">{article.category}</span>
@@ -188,26 +174,23 @@ export default function ArticlePage() {
                   <h1 className="text-xl md:text-2xl font-bold mb-4 text-gray-900">
                     {cleanTitle(article.title)}
                   </h1>
-                  <p className="text-base text-gray-600">
-                    {article.description}
-                  </p>
+                  <p className="text-base text-gray-600">{article.description}</p>
                 </header>
 
-                {/* 文章内容 */}
                 <MarkdownRenderer content={article.content} />
 
-                {/* 文章导航 */}
+                {/* 上一篇/下一篇导航 */}
                 <nav className="flex flex-col md:flex-row gap-4 justify-between mt-12 pt-8 border-t border-gray-200">
                   {prevArticle ? (
                     <Link to={`/article/${prevArticle.id}`} className="btn-secondary text-center">
-                      ← {prevArticle.title}
+                      ← {cleanTitle(prevArticle.title)}
                     </Link>
                   ) : (
                     <div></div>
                   )}
                   {nextArticle ? (
                     <Link to={`/article/${nextArticle.id}`} className="btn-primary text-center">
-                      {nextArticle.title} →
+                      {cleanTitle(nextArticle.title)} →
                     </Link>
                   ) : (
                     <Link to="/" className="btn-secondary text-center">
@@ -218,13 +201,10 @@ export default function ArticlePage() {
               </article>
             </div>
 
-            {/* 右侧边栏 */}
+            {/* 侧边栏 */}
             <div className="lg:col-span-1">
-              {/* 延伸阅读 */}
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-20">
-                <h3 className="text-lg font-semibold mb-4 text-gray-900">
-                  📖 延伸阅读
-                </h3>
+                <h3 className="text-lg font-semibold mb-4 text-gray-900">📖 延伸阅读</h3>
                 <div className="space-y-3">
                   {relatedArticles.map((relatedArticle, index) => (
                     <Link
@@ -253,44 +233,26 @@ export default function ArticlePage() {
                   ))}
                 </div>
 
-                {/* 快速链接 */}
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-3">
-                    快速跳转
-                  </h4>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-3">快速跳转</h4>
                   <div className="space-y-2">
-                    <Link
-                      to="/"
-                      className="block text-sm text-primary-500 hover:text-primary-600 transition-colors"
-                    >
+                    <Link to="/" className="block text-sm text-primary-500 hover:text-primary-600 transition-colors">
                       返回首页
                     </Link>
-                    <a
-                      href="#intro"
-                      className="block text-sm text-primary-500 hover:text-primary-600 transition-colors"
-                    >
+                    <a href="#intro" className="block text-sm text-primary-500 hover:text-primary-600 transition-colors">
                       入门篇
                     </a>
-                    <a
-                      href="#skills"
-                      className="block text-sm text-primary-500 hover:text-primary-600 transition-colors"
-                    >
+                    <a href="#skills" className="block text-sm text-primary-500 hover:text-primary-600 transition-colors">
                       技能库
                     </a>
-                    <a
-                      href="#resources"
-                      className="block text-sm text-primary-500 hover:text-primary-600 transition-colors"
-                    >
+                    <a href="#resources" className="block text-sm text-primary-500 hover:text-primary-600 transition-colors">
                       资源
                     </a>
                   </div>
                 </div>
 
-                {/* 分类标签 */}
                 <div className="mt-6 pt-6 border-t border-gray-200">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-3">
-                    分类
-                  </h4>
+                  <h4 className="text-sm font-semibold text-gray-700 mb-3">分类</h4>
                   <div className="flex flex-wrap gap-2">
                     <span className="badge badge-primary">入门篇</span>
                     <span className="badge bg-gray-100 text-gray-600">文书</span>

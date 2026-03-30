@@ -3,141 +3,519 @@
   <!-- 首页 -->
   <url>
     <loc>https://ocnote.bvmcreative.com/</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
-  <!-- 新闻页面 -->
+  <!-- Agent 专区 -->
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- 新闻中心 -->
   <url>
     <loc>https://ocnote.bvmcreative.com/news</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   
-  <!-- 爬虫教学页面 -->
-  <url>
-    <loc>https://ocnote.bvmcreative.com/crawler</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- 常用指令页面 -->
+  <!-- 常用指令 -->
   <url>
     <loc>https://ocnote.bvmcreative.com/commands</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   
-  <!-- 文章页面 -->
+  <!-- 爬虫教学 -->
+  <url>
+    <loc>https://ocnote.bvmcreative.com/crawler</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- 饲养日记文章 -->
   <url>
     <loc>https://ocnote.bvmcreative.com/article/model-selection</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-13"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/first-chat</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-14"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/basic-formula</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-15"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/advanced-tips</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-16"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/practical-templates</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-17"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/industry-cases</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-18"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/week1-summary</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-19"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/lobster-intern</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-20"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/unique-lobster</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-21"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/lobster-memory</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-22"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/instruction-debugging</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-23"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/file-processing</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-24"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/data-analysis</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-25"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/week2-summary</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-26"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/ai-cognition-gap</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-27"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/ai-visual-limitation</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-28"</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ocnote.bvmcreative.com/article/first-automation-script</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>"2026-03-29"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/article/optimize-ai-financial-report</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Agent 文章 -->
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-backend</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-copywriter-cute</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-copywriter-humor</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-copywriter-strict</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-copywriter</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-data</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-frontend-strict</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-frontend</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-intro</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-lecturer</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-marketing</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-professor</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-solution</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-teacher-patient</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-teacher</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/agent/agent-workflow</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 新闻文章 -->
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-16-extension</loc>
+    <lastmod>"2026-03-16"</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ocnote.bvmcreative.com/article/crawler-intro</loc>
-    <lastmod>2026-03-29</lastmod>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-16-launch</loc>
+    <lastmod>"2026-03-16"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-16-template</loc>
+    <lastmod>"2026-03-16"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-17-backup</loc>
+    <lastmod>"2026-03-17"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-17-logging</loc>
+    <lastmod>"2026-03-17"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-17-security</loc>
+    <lastmod>"2026-03-17"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-18-calendar</loc>
+    <lastmod>"2026-03-18"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-18-gpt45</loc>
+    <lastmod>"2026-03-18"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-18-zoom</loc>
+    <lastmod>"2026-03-18"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-19-canvas</loc>
+    <lastmod>"2026-03-19"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-19-excel</loc>
+    <lastmod>"2026-03-19"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-19-notion</loc>
+    <lastmod>"2026-03-19"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-20-github</loc>
+    <lastmod>"2026-03-20"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-20-slack</loc>
+    <lastmod>"2026-03-20"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-20-wecom</loc>
+    <lastmod>"2026-03-20"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-21-crm</loc>
+    <lastmod>"2026-03-21"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-21-pdf</loc>
+    <lastmod>"2026-03-21"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-21-qwen</loc>
+    <lastmod>"2026-03-21"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-22-analytics</loc>
+    <lastmod>"2026-03-22"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-22-cron</loc>
+    <lastmod>"2026-03-22"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-22-form</loc>
+    <lastmod>"2026-03-22"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-23-meeting</loc>
+    <lastmod>"2026-03-23"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-23-podcast</loc>
+    <lastmod>"2026-03-23"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-23-voice</loc>
+    <lastmod>"2026-03-23"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-24-monitor</loc>
+    <lastmod>"2026-03-24"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-24-scheduler</loc>
+    <lastmod>"2026-03-24"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-24-subagent</loc>
+    <lastmod>"2026-03-24"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-25-auto</loc>
+    <lastmod>"2026-03-25"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-25-grok-3</loc>
+    <lastmod>"2026-03-25"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-25-translate</loc>
+    <lastmod>"2026-03-25"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-26-clawhub</loc>
+    <lastmod>"2026-03-26"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-26-coding</loc>
+    <lastmod>"2026-03-26"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-26-memory-system</loc>
+    <lastmod>"2026-03-26"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-27-api-gateway</loc>
+    <lastmod>"2026-03-27"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-27-claude-sonnet</loc>
+    <lastmod>"2026-03-27"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-27-api</loc>
+    <lastmod>"2026-03-27"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-28-deepseek</loc>
+    <lastmod>"2026-03-28"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-28-plugin-system</loc>
+    <lastmod>"2026-03-28"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-28-workflow</loc>
+    <lastmod>"2026-03-28"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-29-mobile</loc>
+    <lastmod>"2026-03-29"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-29-rag</loc>
+    <lastmod>"2026-03-29"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-29-xai</loc>
+    <lastmod>"2026-03-29"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-30-ai-transformation</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-30-china-ai-policy</loc>
+    <lastmod>"2026-03-30"</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ocnote.bvmcreative.com/news/news-2026-03-30-gpt54</loc>
+    <lastmod>"2026-03-30"</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

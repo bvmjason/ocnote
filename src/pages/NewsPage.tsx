@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { loadArticles, Article } from '@/lib/content'
+import { loadNewsArticles, FullArticle as Article } from '@/lib/news'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -12,8 +12,7 @@ function cleanTitle(title: string): string {
 // 截取 30 字摘要
 function truncateSummary(text: string, length: number = 30): string {
   const clean = text.replace(/[#*_~`>\[\]]/g, '').trim()
-  if (clean.length <= length) return clean
-  return clean.substring(0, length) + '...'
+  return clean.length <= length ? clean : clean.substring(0, length) + '...'
 }
 
 export default function NewsPage() {
@@ -21,11 +20,7 @@ export default function NewsPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    loadArticles().then((articles) => {
-      // 只过滤 news 类别的文章
-      const news = articles.filter(a => 
-        a.category.toLowerCase() === 'news'
-      )
+    loadNewsArticles().then((news) => {
       setNewsArticles(news)
       setLoading(false)
     })
@@ -71,29 +66,33 @@ export default function NewsPage() {
             </div>
           ) : (
             <div className="space-y-8">
-            {dates.map((date) => (
-              <div key={date}>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-primary-500">{date}</h2>
-                <div className="space-y-4">
-                  {groupedNews[date].map((article) => (
-                    <Link
-                      key={article.id}
-                      to={`/news/${article.id}`}
-                      className="block bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md hover:border-primary-300 transition-all"
-                    >
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{cleanTitle(article.title)}</h3>
-                      <p className="text-gray-600 text-sm mb-3">{truncateSummary(article.description, 30)}</p>
-                      <div className="flex items-center gap-4 text-xs text-gray-500">
-                        <span>{article.source || '未知来源'}</span>
-                        <span>·</span>
-                        <span>{article.date}</span>
-                      </div>
-                    </Link>
-                  ))}
+              {dates.map((date) => (
+                <div key={date}>
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-primary-500">{date}</h2>
+                  <div className="space-y-4">
+                    {groupedNews[date].map((article) => (
+                      <Link
+                        key={article.id}
+                        to={`/news/${article.id}`}
+                        className="block bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md hover:border-primary-300 transition-all"
+                      >
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                          {cleanTitle(article.title)}
+                        </h3>
+                        <p className="text-gray-600 text-sm mb-3">
+                          {truncateSummary(article.description, 30)}
+                        </p>
+                        <div className="flex items-center gap-4 text-xs text-gray-500">
+                          <span>{article.source || '未知来源'}</span>
+                          <span>·</span>
+                          <span>{article.date}</span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           )}
 
           <div className="text-center text-xs sm:text-sm text-gray-500 mt-8 pb-8">

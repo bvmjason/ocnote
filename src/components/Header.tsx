@@ -32,6 +32,12 @@ export default function Header() {
                 新闻整理
               </Link>
               <Link 
+                to="/agent" 
+                className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
+              >
+                AGENT 教学
+              </Link>
+              <Link 
                 to="/crawler" 
                 className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base"
               >

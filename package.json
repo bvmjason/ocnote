@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "check": "./check-content.sh",
+    "sync": "./sync-content.sh",
+    "build": "tsc && vite build && node scripts/generate-rss.js",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "rss": "node scripts/generate-rss.js"
   },
   "dependencies": {
     "fuse.js": "^7.0.0",

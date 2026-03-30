@@ -1,15 +1,22 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { loadArticles, Article } from '@/lib/content'
+
+interface Article {
+  id: string
+  title: string
+  description: string
+  category: string
+  order: number
+  readTime: string
+  content: string
+}
 
 export default function CrawlerPage() {
   const [articles, setArticles] = useState<Article[]>([])
 
   useEffect(() => {
-    loadArticles().then(allArticles => {
-      const crawlerArticles = allArticles.filter(a => a.category === 'crawler')
-      setArticles(crawlerArticles.sort((a, b) => parseInt(String(a.order)) - parseInt(String(b.order))))
-    })
+    // TODO: 实现爬虫教学文章加载
+    setArticles([])
   }, [])
 
   const categoryList = [
@@ -31,7 +38,7 @@ export default function CrawlerPage() {
             <div className="hidden sm:flex items-center space-x-3 md:space-x-4">
               <Link to="/" className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base">饲养日记</Link>
               <Link to="/news" className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base">新闻整理</Link>
-              <Link to="/crawler" className="text-primary-500 font-medium text-sm md:text-base">爬虫教学</Link>
+              <Link to="/agent" className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base">AGENT 教学</Link>
               <Link to="/commands" className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base">常用指令</Link>
               <a href="https://github.com/bvmjason/ocnote" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-primary-500 transition-colors font-medium text-sm md:text-base">社群支持</a>
             </div>
@@ -58,8 +65,8 @@ export default function CrawlerPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {categoryList.map((cat) => {
                 const catArticles = articles.filter(a => {
-                  const o = parseInt(String(a.order))
-                  return o >= cat.range[0] && o < cat.range[1]
+                  const order = parseInt(String(a.order))
+                  return order >= cat.range[0] && order < cat.range[1]
                 })
                 return (
                   <div key={cat.key} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">

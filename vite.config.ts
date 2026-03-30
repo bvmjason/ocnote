@@ -4,28 +4,35 @@ import path from 'path'
 import fs from 'fs'
 import { copyFileSync, mkdirSync } from 'fs'
 
-// 自定义插件：复制 markdown 文件到 dist/assets
+// 自定义插件：复制 markdown 文件到 dist/assets 子目录
 function copyMarkdownPlugin() {
   return {
     name: 'copy-markdown',
     closeBundle() {
-      const srcDir = path.resolve(__dirname, 'content/intro')
-      const destDir = path.resolve(__dirname, 'dist/assets')
+      const categories = [
+        { src: 'content/diary', dest: 'dist/assets/diary' },
+        { src: 'content/agent', dest: 'dist/assets/agent' },
+        { src: 'content/news', dest: 'dist/assets/news' }
+      ]
       
-      if (!fs.existsSync(destDir)) {
-        mkdirSync(destDir, { recursive: true })
-      }
-      
-      const files = fs.readdirSync(srcDir).filter(f => f.endsWith('.md'))
-      files.forEach(file => {
-        const src = path.join(srcDir, file)
-        // 生成带 hash 的文件名（与 content.ts 中的路径匹配）
-        const content = fs.readFileSync(src, 'utf-8')
-        const hash = Buffer.from(content).toString('base64').substring(0, 8)
-        const baseName = file.replace('.md', '')
-        const dest = path.join(destDir, `${baseName}-${hash}.md`)
-        copyFileSync(src, dest)
-        console.log(`Copied ${file} -> ${baseName}-${hash}.md`)
+      categories.forEach(({ src, dest }) => {
+        const srcDir = path.resolve(__dirname, src)
+        const destDir = path.resolve(__dirname, dest)
+        
+        if (!fs.existsSync(destDir)) {
+          mkdirSync(destDir, { recursive: true })
+        }
+        
+        const files = fs.readdirSync(srcDir).filter(f => f.endsWith('.md'))
+        files.forEach(file => {
+          const src = path.join(srcDir, file)
+          const content = fs.readFileSync(src, 'utf-8')
+          const hash = Buffer.from(content).toString('base64').substring(0, 8)
+          const baseName = file.replace('.md', '')
+          const dest = path.join(destDir, `${baseName}-${hash}.md`)
+          copyFileSync(src, dest)
+          console.log(`Copied ${file} -> ${baseName}-${hash}.md`)
+        })
       })
     }
   }

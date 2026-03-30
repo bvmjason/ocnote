@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title><![CDATA[OpenClaw 饲养日记]]></title>
+    <link>https://ocnote.bvmcreative.com</link>
+    <description><![CDATA[记录 AI 驯养过程中的点点滴滴，分享 AI 助手使用技巧、自动化脚本、爬虫教程]]></description>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 30 Mar 2026 07:15:01 GMT</lastBuildDate>
+    <atom:link href="https://ocnote.bvmcreative.com/rss.xml" rel="self" type="application/rss+xml" />
+    <generator>OCnote RSS Generator</generator>
+    <copyright>Copyright 2026 Jason Kao</copyright>
+    <item>
+      <title><![CDATA[模型的对比与选择 - 不同职业怎么选 AI]]></title>
+      <link>https://ocnote.bvmcreative.com/article/model-selection</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/model-selection</guid>
+      <description><![CDATA[不同职业背景如何选择适合自己的 AI 模型]]></description>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>intro</category>
+    </item>
+    <item>
+      <title><![CDATA[第一次和 OpenClaw 聊天]]></title>
+      <link>https://ocnote.bvmcreative.com/article/first-chat</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/first-chat</guid>
+      <description><![CDATA[记录第一次使用 OpenClaw 的经历]]></description>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>intro</category>
+    </item>
+    <item>
+      <title><![CDATA[基础指令公式]]></title>
+      <link>https://ocnote.bvmcreative.com/article/basic-formula</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/basic-formula</guid>
+      <description><![CDATA[AI 指令的基础公式和模板]]></description>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>intro</category>
+    </item>
+    <item>
+      <title><![CDATA[进阶技巧]]></title>
+      <link>https://ocnote.bvmcreative.com/article/advanced-tips</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/advanced-tips</guid>
+      <description><![CDATA[提升 AI 输出质量的高级技巧]]></description>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>intro</category>
+    </item>
+    <item>
+      <title><![CDATA[实用模板]]></title>
+      <link>https://ocnote.bvmcreative.com/article/practical-templates</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/practical-templates</guid>
+      <description><![CDATA[日常工作常用的 AI 指令模板]]></description>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>intro</category>
+    </item>
+    <item>
+      <title><![CDATA[行业案例]]></title>
+      <link>https://ocnote.bvmcreative.com/article/industry-cases</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/industry-cases</guid>
+      <description><![CDATA[AI 在各行业的实际应用案例]]></description>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>intro</category>
+    </item>
+    <item>
+      <title><![CDATA[第一周总结]]></title>
+      <link>https://ocnote.bvmcreative.com/article/week1-summary</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/week1-summary</guid>
+      <description><![CDATA[使用 OpenClaw 第一周的心得体会]]></description>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>intro</category>
+    </item>
+    <item>
+      <title><![CDATA[龙虾实习生]]></title>
+      <link>https://ocnote.bvmcreative.com/article/lobster-intern</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/lobster-intern</guid>
+      <description><![CDATA[把 AI 当实习生带的技巧]]></description>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>advanced</category>
+    </item>
+    <item>
+      <title><![CDATA[独特的龙虾]]></title>
+      <link>https://ocnote.bvmcreative.com/article/unique-lobster</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/unique-lobster</guid>
+      <description><![CDATA[每个 AI 助手都有独特的个性]]></description>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>advanced</category>
+    </item>
+    <item>
+      <title><![CDATA[龙虾的记忆]]></title>
+      <link>https://ocnote.bvmcreative.com/article/lobster-memory</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/lobster-memory</guid>
+      <description><![CDATA[AI 助手的记忆机制详解]]></description>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>advanced</category>
+    </item>
+    <item>
+      <title><![CDATA[指令调试]]></title>
+      <link>https://ocnote.bvmcreative.com/article/instruction-debugging</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/instruction-debugging</guid>
+      <description><![CDATA[如何调试和优化 AI 指令]]></description>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>advanced</category>
+    </item>
+    <item>
+      <title><![CDATA[文件处理]]></title>
+      <link>https://ocnote.bvmcreative.com/article/file-processing</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/file-processing</guid>
+      <description><![CDATA[让 AI 处理各类文件的技巧]]></description>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>advanced</category>
+    </item>
+    <item>
+      <title><![CDATA[数据分析]]></title>
+      <link>https://ocnote.bvmcreative.com/article/data-analysis</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/data-analysis</guid>
+      <description><![CDATA[用 AI 进行数据分析的方法]]></description>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>advanced</category>
+    </item>
+    <item>
+      <title><![CDATA[第二周总结]]></title>
+      <link>https://ocnote.bvmcreative.com/article/week2-summary</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/week2-summary</guid>
+      <description><![CDATA[使用 OpenClaw 第二周的心得体会]]></description>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>advanced</category>
+    </item>
+    <item>
+      <title><![CDATA[AI 认知差距]]></title>
+      <link>https://ocnote.bvmcreative.com/article/ai-cognition-gap</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/ai-cognition-gap</guid>
+      <description><![CDATA[人与 AI 之间的认知差异分析]]></description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>cognition</category>
+    </item>
+    <item>
+      <title><![CDATA[AI 视觉局限]]></title>
+      <link>https://ocnote.bvmcreative.com/article/ai-visual-limitation</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/ai-visual-limitation</guid>
+      <description><![CDATA[AI 在视觉理解上的局限性]]></description>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>cognition</category>
+    </item>
+    <item>
+      <title><![CDATA[第一个自动化脚本]]></title>
+      <link>https://ocnote.bvmcreative.com/article/first-automation-script</link>
+      <guid isPermaLink="true">https://ocnote.bvmcreative.com/article/first-automation-script</guid>
+      <description><![CDATA[用 AI 编写自动化脚本的经历]]></description>
+      <pubDate>Sun, 29 Mar 2026 00:00:00 GMT</pubDate>
+      <author>jason@bvmcreative.com (Jason Kao)</author>
+      <category>cognition</category>
+    </item>
+  </channel>
+</rss>
